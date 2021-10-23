@@ -1,9 +1,9 @@
 import React from 'react';
 import NewsProvider from '../context/NewsContext';
-import Article from './Article';
+import Article from './article/Article';
 import Header from './Header';
-import NewsList from './NewsList';
-import NewsSources from './NewsSources';
+import NewsList from './articles/NewsList';
+import NewsSources from './sources/NewsSources';
 
 const App = () => {
     return (

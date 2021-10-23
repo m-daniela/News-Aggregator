@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { NewsContext } from '../context/NewsContext';
+import { NewsContext } from '../../context/NewsContext';
+import ReactHtmlParser from "html-react-parser";
 
 /**
  * Displays the selected article
@@ -11,7 +12,7 @@ const Article = () => {
         <div className="article">
             <h1>{title}</h1>
             <span>{date}</span>
-            <div>{article}</div>
+            <div>{ReactHtmlParser(article ?? "")}</div>
         </div>
     );
 };

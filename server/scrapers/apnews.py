@@ -45,13 +45,6 @@ def get_by_category(category):
     return get_articles(category)
 
 
-def combine_paragraphs(paragraphs):
-    result = ""
-    for p in paragraphs:
-        result = f"{result}\n\n{p.text.strip()}"
-
-    return result
-
 def get_article(url):
     """
     Get the title, text and publication date of the article
@@ -64,8 +57,8 @@ def get_article(url):
         header = soup.find(attrs={"data-key": "card-headline"})
         title = header.text.strip()
         article = soup.find(class_="Article")
-        paras = article.find_all("p")
-        article_text = combine_paragraphs(paras)
+        paragraphs = article.find_all("p")
+        article_text = utils.combine_paragraphs(paragraphs)
 
         article_obj = {
             "title": title,

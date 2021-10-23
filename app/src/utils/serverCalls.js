@@ -33,7 +33,6 @@ export const getArticlesByCategory = async (source, category) => {
 };
 
 export const getArticle = async (source, url) => {
-    console.log(url);
     return axios.post(getArticleUrl(source), {articleUrl: url})
         .then((result) => {
             return result.data;

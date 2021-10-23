@@ -118,12 +118,16 @@ def get_article(url):
 
     try:
         title = soup.find("h1").text.strip()
-        article = soup.find(class_="entry").text.strip()
+        article = soup.find(class_="entry")
+        paragraphs = article.find_all("p")
+
+        article_text = utils.combine_paragraphs(paragraphs)
+
         date = soup.find(class_="author-meta").text.strip()
 
         article_obj = {
             "title": title,
-            "article": article,
+            "article": article_text,
             "date": date
         }
     except Exception as e:

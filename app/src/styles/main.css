@@ -1,19 +1,50 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
 :root{
     --background-color: #eee;
     --font-color: #111;
-    --secondary-color: #aeaeae;
+    --secondary-color: #ddd;
+    --highlight: #ddd;
+    --scroll-thumb: var(--secondary-color);
+    --scroll-track: var(--background-color);
+    --font: 'Nunito', sans-serif;
+
+    /* dark theme */
+    /* --background-color: #232937;
+    --font-color: #c9dae9;
+    --secondary-color: #1a1e29;
+    --highlight: #7290aa; */
 }
 
-html, body{
+html, body, #root, .app, .contents{
     height: 100%;
+    background-color: var(--background-color);
 }
 
 html, body, .app{
     margin: 0;
+    overflow: hidden;
 }
 
-nav, .contents{
+.app, a{
+    color: var(--font-color);
+    font-family: var(--font);
+}
+
+a{
+    margin-right: .5em;
+}
+
+h1{
+    font-size: 1.5em;
+}
+
+h2{
+    font-size: 1.3em;
+}
+
+nav{
     width: calc(100% - 4em);
     padding: 0 2em;
 }
@@ -25,6 +56,7 @@ nav{
 
 .contents{
     display: flex;
+    height: calc(100% - 50px);
 }
 
 .sources, .news, .article{
@@ -32,20 +64,74 @@ nav{
     flex-direction: column;
     border-right: 1px solid var(--secondary-color);
     padding: 1em;
+    overflow: auto;
+    text-align: justify;
 }
-
 
 .sources{
     flex-basis: 10%;
     padding-left: 0;
+    margin-left: 1em;
+}
+
+.source{
+    padding: .5em 0 .5em 1em;
+    transition: all .5s ease-in;
+}
+
+.source:hover{
+    cursor: pointer;
+    background-color: var(--highlight);
+}
+
+.source.selected{
+    cursor: pointer;
+    background-color: var(--highlight);
 }
 
 .news{
     flex-basis: 30%;
+    padding: 1em 2em;
+}
+
+.news-item{
+    cursor: pointer;
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 .article{
     border: none;
     align-items: center;
     flex-basis: 60%;
+    padding: 1em 4em;
+}
+
+.article > * {
+    width: 70%;
+}
+
+.article div {
+    margin-bottom: 2em;
+}
+
+
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--scroll-track);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb);
+    border-radius: 20px;
+    border: none;
 }

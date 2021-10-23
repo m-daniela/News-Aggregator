@@ -52,10 +52,12 @@ def get_article(url):
     try:
         title = soup.find(class_="post-title").text.strip()
         date = soup.find(class_="post-date").text.strip()
-        article = soup.find(class_="post-content").text.strip()
+        article = soup.find(class_="post-content")
+        paragraphs = article.find_all("p")
+        article_text = utils.combine_paragraphs(paragraphs)
         article_obj = {
             "title": title,
-            "article": article,
+            "article": article_text,
             "date": date
         }
     except Exception as e:

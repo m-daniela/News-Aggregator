@@ -15,3 +15,10 @@ def prepare_soup(url):
     soup = BeautifulSoup(response.content, "html.parser")
 
     return soup
+
+def combine_paragraphs(paragraphs):
+    result = ""
+    for p in paragraphs:
+        result = f"{result}<p>{p.text.strip()}<p>"
+
+    return result
