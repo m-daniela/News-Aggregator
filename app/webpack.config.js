@@ -45,6 +45,16 @@ module.exports = {
                   "sass-loader",
                 ],
             },
+            // css
+            {
+                test: /\.css$/i,
+                use: [
+                  // Creates `style` nodes from JS strings
+                  "style-loader",
+                  // Translates CSS into CommonJS
+                  "css-loader"
+                ],
+            },
             // image files
             {
                 test: /\.(png|jpe?g|gif)$/,

@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
 from markupsafe import escape
 import scrapers.digi24 as digi
 import scrapers.g4media as g4
@@ -17,6 +18,7 @@ news = {
 }
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 @app.route("/<news_source>", methods=["GET"])
@@ -46,7 +48,7 @@ def get_news_by_category(news_source, category):
         })
 
 
-@app.route("/<news_source>/article", methods=["GET"])
+@app.route("/<news_source>/article", methods=["POST"])
 def get_article(news_source):
     try:
         website = escape(news_source)
