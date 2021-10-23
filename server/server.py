@@ -4,6 +4,7 @@ from markupsafe import escape
 import scrapers.digi24 as digi
 import scrapers.g4media as g4
 import scrapers.apnews as ap
+import scrapers.arstechnica as ars
 
 """
 The server
@@ -15,6 +16,7 @@ news = {
     "digi24": digi,
     "g4media": g4,
     "apnews": ap,
+    "arstechnica": ars
 }
 
 app = Flask(__name__)
